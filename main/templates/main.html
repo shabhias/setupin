@@ -1,6 +1,62 @@
-<h1>SETUPIN</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        h1 {
+            color: #333;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        
+        h2 {
+            color: #666;
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+        
+        p {
+            color: #999;
+            font-size: 14px;
+            margin-bottom: 3px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Product Information</h1>
+        <h3>set up meja kamu, biar nyaman nugas.</h3>
 
-<h5>Name: </h5>
-<p>{{ name }}<p>
-<h5>Class: </h5>
-<p>{{ class }}<p>
+
+        
+        <h2>{{ product_deskmate.name }}</h2>
+        <p>Amount: {{ product_deskmate.amount }}</p>
+        <p>Price: {{ product_deskmate.price }}</p>
+        <p>Description: {{ product_deskmate.description }}</p>
+        
+        <h2>{{ product_lightbar.name }}</h2>
+        <p>Amount: {{ product_lightbar.amount }}</p>
+        <p>Price: {{ product_lightbar.price }}</p>
+        <p>Description: {{ product_lightbar.description }}</p>
+        
+        <h2>Additional Products</h2>
+        <p>{{ product1 }}: {{ amount1 }}</p>
+        <p>{{ product2 }}: {{ amount2 }}</p>
+    </div>
+</body>
+</html>
