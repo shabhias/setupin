@@ -13,15 +13,12 @@ class mainTest(TestCase):
         self.assertTemplateUsed(response, 'main.html')
     
     def setUp(self):
-        # Membuat objek Product Deskmate
         self.deskmate = Product.objects.create(
             name='Deskmate',
             amount=10,
             price=150000,
             description='dengan DESKMATE yang sesuai dengan seleramu, membuat kamu nyaman saat nugas di atas meja'
         )
-
-        # Membuat objek Product Monitor Lightbar
         self.lightbar = Product.objects.create(
             name='Monitor Lightbar',
             amount=20,
