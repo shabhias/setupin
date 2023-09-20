@@ -6,10 +6,11 @@
     <title>Product Page</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f5f5f5;
+            font-family: 'Fantasy';
+            background-color: #23033D;
             margin: 0;
             padding: 0;
+            color: white; /* Set the font color to white */
         }
         
         .container {
@@ -19,21 +20,25 @@
         }
         
         h1 {
-            color: #333;
-            font-size: 24px;
+            color: white; /* Set the font color to white */
+            font-size: 50px;
             margin-bottom: 10px;
         }
         
         h2 {
-            color: #666;
+            color: white; /* Set the font color to white */
             font-size: 18px;
             margin-bottom: 5px;
         }
         
         p {
-            color: #999;
+            color: white; /* Set the font color to white */
             font-size: 14px;
             margin-bottom: 3px;
+        }
+        
+        th {
+            color: white; /* Set the font color to white */
         }
     </style>
 </head>
@@ -42,8 +47,6 @@
         <h1>Product Information</h1>
         <h3>set up meja kamu, biar nyaman nugas.</h3>
 
-
-        
         <h2>{{ product_deskmate.name }}</h2>
         <p>Amount: {{ product_deskmate.amount }}</p>
         <p>Price: {{ product_deskmate.price }}</p>
@@ -55,8 +58,32 @@
         <p>Description: {{ product_lightbar.description }}</p>
         
         <h2>Additional Products</h2>
-        <p>{{ product1 }}: {{ amount1 }}</p>
-        <p>{{ product2 }}: {{ amount2 }}</p>
+
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Amount</th>
+                <th>Description</th>
+            </tr>
+        
+            <!-- Berikut cara memperlihatkan data produk di bawah baris ini -->
+        
+            {% for product in products %}
+                <tr>
+                    <td>{{ product.name }}</td>
+                    <td>{{ product.price }}</td>
+                    <td>{{ product.amount }}</td>
+                    <td>{{ product.description }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+        
+        <a href="{% url 'main:create_product' %}">
+            <button>
+                Add New Product
+            </button>
+        </a>
     </div>
 </body>
 </html>
