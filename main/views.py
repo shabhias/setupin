@@ -10,6 +10,7 @@ from django.core import serializers
 # Create your views here.
 def show_main(request):
     products = Product.objects.all()
+    jumlah = Product.objects.count()
     
     product_deskmate = Product(
         name = 'Deskmate',
@@ -33,7 +34,8 @@ def show_main(request):
         'amount1': '13',
         'product2': 'Miniatur Figure',
         'amount2': '10',
-        'products': products
+        'products': products,
+        'jumlah' : jumlah
     }
 
     return render(request, "main.html", context)
