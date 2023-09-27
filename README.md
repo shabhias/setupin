@@ -1,32 +1,46 @@
-## TUGAS 3
+## TUGAS 4
 
-## Apa perbedaan antara form POST dan form GET dalam Django?
-dalam penggunaannya, GET mengirimkan data formulir ke server melalui URL dan disimpan dalam URL, sedangkan POST mengirimkan data formulir ke server dan disimpan dalam body permintaan HTTP. Dari segi keamanan, POST lebih aman dibandingkan dengan GET karena data tersebut tidak terlihat di URL.
+## Apa itu Django UserCreationForm, dan jelaskan apa kelebihan dan kekurangannya?
+- usercreation form adalah form yang disediakan django untuk pembuatan user dengan fitur keamanan seperti username dan password dalam aplikasi web
+- kelebihannya adalah mudah digunakan dan memiliki fitur keamanan yang sudah disediakan oleh jango
+- kekurangannya adalah tampilan kurang menarik dan fitur-fiturnya terbatas
 
-## Apa perbedaan utama antara XML, JSON, dan HTML dalam konteks pengiriman data?
-XML: digunakan untuk menyimpan dan bertukar data antara sistem komputer. XML memiliki struktur yang fleksibel dan dapat dibaca oleh mesin dan manusia, biasanya digunakan untuk pertukaran data antar aplikasi. 
-JSON: digunakan untuk pertukaran data yang ringan dan efisien antara sistem yang berbeda. dapat dipahami berbagai bahasa pemrograman. Lebih sederhana dibandingkan dengan XML
-HTML: digunakan untuk membuat struktur dan tampilan halaman web. Tidak digunakan untuk pertukaran data antar aplikasi, melaikan untuk menyajikan data kepada user melalui halaman web
+## Apa perbedaan antara autentikasi dan otorisasi dalam konteks Django, dan mengapa keduanya penting?
+- Auntentikasi proses mengidentifikasi user
+- ototritas proses memberikan hak akses kepada user yang terlah terauntetikasi
+- keduanya sangat penting untuk melindungi hak akses dan data 
 
-## Mengapa JSON sering digunakan dalam pertukaran data antara aplikasi web modern?
-jSON sering digunakan dalam pertukaran data antara aplikasi web modern karena formatnya ringan dan mudah dibaca serta mudah dipahami berbagai bahasa pemrograman.
 
-## Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial)
-### Membuat input form untuk menambahkan objek model pada app sebelumnya.
- - buat berkas forms.py untuk membuat struktur form dengan menggunakan model.py untuk model product. agar dapat input data produk baru
- - dalam berkas views.py ditambahkan fungsi create_product untuk pembuatan data produk baru berdasarkan input dari form
- - fungsi show main digunakan untuk menampilkan semua produk yang tersimpan di database. 
- - pada berkas urls.py diatur URL untuk mengakses fungsi create_product yang sudah dibuat sebelumnya
- - dibuat berkas create_product.html yang berisi form untuk menambahkan data produk baru. Form ini menggunakan metode POST. 
- - dalam berkas main.html ditambahkan kode untuk menampilkan data produk dalam bentuk tabel dan tombol "add new product" yang mengarahkan user ke halaman form 
+## Apa itu cookies dalam konteks aplikasi web, dan bagaimana Django menggunakan cookies untuk mengelola data sesi pengguna?
+ - cookies digunakan pada situs web untuk menyimpan informasi user termasuk pengelolaan data user.
+- a. user mengakses web django, kemudian server Django akan membuat ID unik untuk user dan menyimpannya ke cookies yang sudah dikirim ke user. 
+  b. kemudian, ketika user menggunakan aplikasi web lagi, ID akan dikirim kembali ke server Django melalui cookies. Fungsi ID untuk mengidentifikasi user yang sesuai dan menyimpan atau mengambil data yang relevan
+  c. Django menyimpan data di server, dalam database atau cache dan menghubungkannya dengan ID yang dikirim melalui cookies
+  d. risiko potensial yang harus diwaspadai adalah, kerentanan terhadap Cross-Site Scripting(XSS) jika data yang disimpan tidak dilakukan secara benar. 
 
-### Tambahkan 5 fungsi views untuk melihat objek yang sudah ditambahkan dalam format HTML, XML, JSON, XML by ID, dan JSON by ID.
- - lalu tambahkan lima fungsi views untuk melihat objek dalam berbagai format seperti HTML, XML, JSON, XML by ID, dan JSON by ID. fungsi tersebut memberikan fleksibilitas kepada pengguna aplikasi dalam mengakses dan memanfaatkan data.   
- - dengan menambahkan fungsi yang menerima parameter request dengan nama show_xml,show_JSON,show_xml_by_id, dan show_json_by_id ke dalam file views.py
+## Apakah penggunaan cookies aman secara default dalam pengembangan web, atau apakah ada risiko potensial yang harus diwaspadai?
+- informasi pribadi user dapat di salah gunakan
+- serangan XSS, menyisipkan skrip berbahaya ke dalam halaman web yang dapat dieksekusi oleh user. Hal ini dapat mengakibatkan pencurian data pribadi atau pengalihan ke situs web berbahaya.
+- serangan CSRF, yang dapat merubah pengaturan akun
 
-### Membuat routing URL untuk masing-masing views yang telah ditambahkan pada poin 2.
- - lalu membuat routing URL untuk masing-masing views yangg telah ditambahkan untuk menghubungkan permintaan HTTP dari user ke fungsi views. 
- - dengan mengimpor fungsi yang sudah di buat dan menambahkan path url ke dalam urlpatterns untuk mengakses fungsi yang sudah diimpor tadi.
+## Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).
+
+### Mengimplementasikan fungsi registrasi, login, dan logout untuk memungkinkan pengguna untuk mengakses aplikasi sebelumnya dengan lancar.
+   - untuk membuat registrasi form, import UserCreationForm yang memudahkan kita untuk membuat registrasi form tanpa menulis kode dari awal. Kemudian membuat fungsi regitrasi harus memvalidasi input dan menyimpan data form tersebut. Kemudian membuat html dari form yang sudah dibuat
+   - untuk membuat login, import metode yang diperlukan untuk autentikasi login. Kemudian buatlah template untuk login berupa HTML. Dengan menambahkan path URL ini ke dalam urlpatterns di file urls.py pada subdirektori main, maka pola URL telah terhubung dengan fungsi login_user
+   - untuk membuat log out, membuat fungsi log untuk menghapus sesi pengguna yang masuk. Kemudian mengarahkan pengguna ke halaman login dalam aplikasi Django dan kemudian hubungan fungsi tersebut dengan URL. 
+
+### Membuat dua akun pengguna dengan masing-masing tiga dummy data menggunakan model yang telah dibuat pada aplikasi sebelumnya untuk setiap akun di lokal.
+   - Untuk membuat dua akun pengguna dengan tiga dummy data menggunakan model yang telah dibuat sebelumnya pada aplikasi di lokal, kamu perlu impor model User dan Item ke dalam file yang akan digunakan.
+
+
+### Menghubungkan model Item dengan User.
+   - untuk menghubungkan product dengan user, kita harus import user ke dalam file models.py agar dapat mengidentifikasinya.Kemudian pastikan model Item memiliki field ForeignKey yang mengacu pada model User. Kemudian menambahkan Item.objects.filter(owner=user) untuk mendapatkan semua item yang dimiliki oleh seorang pengguna tertentu, di mana user adalah instance dari model User.
+
+
+### Menampilkan detail informasi pengguna yang sedang logged in seperti username dan menerapkan cookies seperti last login pada halaman utama aplikasi.
+   - import datetimen. Kemudian pada fungsi login_user, kita akan menambahkan fungsi untuk menambahkan cookie yang bernama last_login untuk melihat kapan terakhir kali pengguna melakukan login. `response.setcookie('last_login', str(datetime.datetime.now())) berfungsi untuk membuat _cookie last_login dan menambahkannya ke dalam response. Kemudian tambahkan potongan kode 'last_login': request.COOKIES['last_login'] ke dalam variabel context untuk  menambahkan informasi cookie last_login pada response yang akan ditampilkan di halaman web. Kemudian jangan lupa untuk menghapus menghapus cookie last_login saat pengguna melakukan logout.
+
 
 
 

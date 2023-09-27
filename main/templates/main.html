@@ -46,6 +46,7 @@
     <div class="container">
         <h1>Product Information</h1>
         <h3>set up meja kamu, biar nyaman nugas.</h3>
+        <h4>{{ name }}</h4>
 
         <h2> Kamu menyimpan {{jumlah}} item pada aplikasi ini</h2>
 
@@ -53,8 +54,8 @@
             <tr>
                 <th>Name</th>
                 <th>Price</th>
-                <th>Amount</th>
                 <th>Description</th>
+                <th>Amount</th>
             </tr>
         
             <!-- Berikut cara memperlihatkan data produk di bawah baris ini -->
@@ -63,15 +64,38 @@
                 <tr>
                     <td>{{ product.name }}</td>
                     <td>{{ product.price }}</td>
-                    <td>{{ product.amount }}</td>
+                    {% comment %} <td>{{ product.amount }}</td> {% endcomment %}
                     <td>{{ product.description }}</td>
+                    <td style="border: 1px solid black; padding: 10px;">
+                        {{ product.amount }}
+                        <a href="{% url 'main:increment_amount' product.id %}">
+                            <button>+</button>
+                        </a>
+                        <a href="{% url 'main:decrement_amount' product.id %}">
+                            <button>-</button>
+                        </a>
+                    </td>
+                    <td style="border: 1px solid black; padding: 10px;">{{ product.price }}</td>
+                    <td style="border: 1px solid black; padding: 10px;">
+                        <a href="{% url 'main:delete_product' product.id %}">
+                            <button>Delete</button>
+                        </a>
+                    </td>
                 </tr>
             {% endfor %}
         </table>
+
+        <h5>Sesi terakhir login: {{ last_login }}</h5>
         
         <a href="{% url 'main:create_product' %}">
             <button>
                 Add New Product
+            </button>
+        </a>
+
+        <a href="{% url 'main:logout' %}">
+            <button>
+                Logout
             </button>
         </a>
     </div>
