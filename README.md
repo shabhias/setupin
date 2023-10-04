@@ -1,3 +1,41 @@
+
+# TUGAS 5
+
+## Jelaskan manfaat dari setiap element selector dan kapan waktu yang tepat untuk menggunakannya.
+
+Manfaat selector dalam CSS adalah untuk memberikan gaya umum untuk semua elemen, seperti mengatur padding ataupun margin. selector juga menambahkan keunikan dalam sebuah web yang membuat pembaca merasakan. Waktu yang tepat untuk menggunakannya adalah 
+
+
+## Jelaskan HTML5 Tag yang kamu ketahui.
+
+<header>: Digunakan untuk mengelompokkan elemen-elemen header pada halaman web, seperti judul, logo, dan menu navigasi.
+<nav>: Digunakan untuk mengelompokkan elemen-elemen navigasi pada halaman web, seperti menu atau daftar tautan.
+<section>: Digunakan untuk mengelompokkan elemen-elemen yang terkait secara tematik pada halaman web, seperti bagian-bagian dari artikel atau konten.
+<article>: Digunakan untuk mengelompokkan konten yang berdiri sendiri dan dapat berdiri sendiri secara independen, seperti artikel berita atau posting blog.
+<aside>: Digunakan untuk mengelompokkan konten yang berhubungan dengan konten utama pada halaman web, seperti sidebar atau kotak info tambahan.
+<footer>: Digunakan untuk mengelompokkan elemen-elemen footer pada halaman web, seperti informasi kontak, tautan ke halaman lain, atau hak cipta.
+
+## Jelaskan perbedaan antara margin dan padding.
+
+Perbedaan utama antara margin dan padding adalah bahwa margin mempengaruhi jarak antara elemen dengan elemen lain di sekitarnya, sementara padding mempengaruhi jarak antara konten elemen dengan batas elemen. Margin tidak memiliki warna latar belakang dan tidak mempengaruhi warna latar belakang elemen lain, sedangkan padding dapat memiliki unsur warna yang sesuai dengan warna latar belakang elemen.
+
+##  Jelaskan perbedaan antara framework CSS Tailwind dan Bootstrap. Kapan sebaiknya kita menggunakan Bootstrap daripada Tailwind, dan sebaliknya?
+
+DESIGN:
+-BootStrap: tampilan yang cukup terstruktur dan konsisten. 
+-TailWind: memberikan kebebasan kreatif yang lebih besar dan memungkinkan penggunaan class yang sangat spesifik.
+
+FLEKSIBILITASl
+- BottStrap:Meskipun Bootstrap menyediakan beberapa opsi customisasi, fleksibilitasnya terbatas dibandingkan dengan Tailwind CSS. Anda mungkin perlu menambahkan atau mengganti beberapa kelas CSS secara manual untuk mendapatkan tampilan yang sesuai dengan kebutuhan Anda.
+- TailWind: Fleksibilitas Tailwind CSS terletak pada kemampuannya untuk memberikan kontrol yang lebih besar dalam styling elemen.
+
+UKURAN FILE
+-BootStrap: Bootstrap adalah kerangka kerja yang lebih besar dalam hal ukuran file karena menyediakan banyak fitur dan komponen yang siap pakai. Ini mungkin berdampak pada kecepatan pengunduhan dan performa halaman web.
+- TailWind: dirancang untuk lebih ringan dalam hal ukuran file. Namun, ketika kita menggunakan banyak class utilitas dalam kode, ukuran file CSS dapat meningkat.
+
+referensi: https://codepolitan.com/blog/perbedaan-bootstrap-dan-tailwind
+
+
 ## TUGAS 4
 
 ## Apa itu Django UserCreationForm, dan jelaskan apa kelebihan dan kekurangannya?
@@ -31,7 +69,7 @@
    - untuk membuat log out, membuat fungsi log untuk menghapus sesi pengguna yang masuk. Kemudian mengarahkan pengguna ke halaman login dalam aplikasi Django dan kemudian hubungan fungsi tersebut dengan URL. 
 
 ### Membuat dua akun pengguna dengan masing-masing tiga dummy data menggunakan model yang telah dibuat pada aplikasi sebelumnya untuk setiap akun di lokal.
-   - Untuk membuat dua akun pengguna dengan tiga dummy data menggunakan model yang telah dibuat sebelumnya pada aplikasi di lokal, kamu perlu impor model User dan Item ke dalam file yang akan digunakan.
+   - Untuk membuat dua akun pengguna dengan tiga dummy data menggunakan model yang telah dibuat sebelumnya pada aplikasi di lokal, perlu impor model User dan Item ke dalam file yang akan digunakan. Kemudian 
 
 
 ### Menghubungkan model Item dengan User.
@@ -40,30 +78,6 @@
 
 ### Menampilkan detail informasi pengguna yang sedang logged in seperti username dan menerapkan cookies seperti last login pada halaman utama aplikasi.
    - import datetimen. Kemudian pada fungsi login_user, kita akan menambahkan fungsi untuk menambahkan cookie yang bernama last_login untuk melihat kapan terakhir kali pengguna melakukan login. `response.setcookie('last_login', str(datetime.datetime.now())) berfungsi untuk membuat _cookie last_login dan menambahkannya ke dalam response. Kemudian tambahkan potongan kode 'last_login': request.COOKIES['last_login'] ke dalam variabel context untuk  menambahkan informasi cookie last_login pada response yang akan ditampilkan di halaman web. Kemudian jangan lupa untuk menghapus menghapus cookie last_login saat pengguna melakukan logout.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 ## TUGAS 2

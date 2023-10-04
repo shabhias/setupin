@@ -10,94 +10,161 @@
             background-color: #23033D;
             margin: 0;
             padding: 0;
-            color: white; /* Set the font color to white */
+            color: white;
         }
         
         .container {
             max-width: 800px;
             margin: 0 auto;
             padding: 20px;
+            text-align: center;
         }
         
         h1 {
-            color: white; /* Set the font color to white */
             font-size: 50px;
             margin-bottom: 10px;
         }
         
         h2 {
-            color: white; /* Set the font color to white */
             font-size: 18px;
             margin-bottom: 5px;
         }
         
-        p {
-            color: white; /* Set the font color to white */
-            font-size: 14px;
-            margin-bottom: 3px;
+        table.product-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
         }
         
-        th {
-            color: white; /* Set the font color to white */
+        table.product-table th, table.product-table td {
+            border: 1px solid white;
+            padding: 10px;
+            text-align: left;
         }
+        
+        table.product-table th {
+            background-color:#2D2930; 
+            color: white;
+        }
+        
+        table.product-table td .amount {
+            display: flex;
+            align-items: center;
+        }
+        
+        table.product-table td .amount button {
+            background-color: #FF5722; 
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            margin: 0 5px;
+            cursor: pointer;
+        }
+        
+        table.product-table td .amount button:hover {
+            background-color: #E64A19; 
+        }
+        
+        table.product-table td .amount span {
+            font-weight: bold;
+        }
+        
+        button.delete-button, button.logout-button, button.add-button {
+            background-color: #B71C1C; 
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+        
+        button.delete-button:hover, button.logout-button:hover, button.add-button:hover {
+            background-color: #7F0000; 
+        }
+
+        .navbar {
+            background-color: #2D2930;
+            overflow: hidden;
+        }
+        
+        .navbar a {
+            float: left;
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        .navbar a.logout-button {
+            float: right; /* Move Logout button to the right */
+        }
+        
+        .navbar a:hover {
+            background-color: #7B1FA2;
+            color: white;
+        }
+        
     </style>
 </head>
 <body>
+    <div class="navbar">
+        <a href="#">{{name}}</a>
+        <a href="{% url 'main:logout' %}" class="logout-button">
+            Logout
+        </a>
+    </div>
+
     <div class="container">
         <h1>Product Information</h1>
-        <h3>set up meja kamu, biar nyaman nugas.</h3>
-        <h4>{{ name }}</h4>
+        <h3>Set up meja kamu, biar nyaman nugas.</h3>
 
-        <h2> Kamu menyimpan {{jumlah}} item pada aplikasi ini</h2>
+        <h2>Kamu menyimpan {{ jumlah }} item pada aplikasi ini</h2>
 
-        <table>
-            <tr>
-                <th>Name</th>
-                <th>Price</th>
-                <th>Description</th>
-                <th>Amount</th>
-            </tr>
-        
-            <!-- Berikut cara memperlihatkan data produk di bawah baris ini -->
-        
-            {% for product in products %}
+        <table class="product-table">
+            <thead>
                 <tr>
-                    <td>{{ product.name }}</td>
-                    <td>{{ product.price }}</td>
-                    {% comment %} <td>{{ product.amount }}</td> {% endcomment %}
-                    <td>{{ product.description }}</td>
-                    <td style="border: 1px solid black; padding: 10px;">
-                        {{ product.amount }}
-                        <a href="{% url 'main:increment_amount' product.id %}">
-                            <button>+</button>
-                        </a>
-                        <a href="{% url 'main:decrement_amount' product.id %}">
-                            <button>-</button>
-                        </a>
-                    </td>
-                    <td style="border: 1px solid black; padding: 10px;">{{ product.price }}</td>
-                    <td style="border: 1px solid black; padding: 10px;">
-                        <a href="{% url 'main:delete_product' product.id %}">
-                            <button>Delete</button>
-                        </a>
-                    </td>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Description</th>
+                    <th>Amount</th>
+                    <th>Actions</th>
                 </tr>
-            {% endfor %}
+            </thead>
+            <tbody>
+                {% for product in products %}
+                    <tr>
+                        <td>{{ product.name }}</td>
+                        <td>{{ product.price }}</td>
+                        <td>{{ product.description }}</td>
+                        <td>
+                            <div class="amount">
+                                <a href="{% url 'main:increment_amount' product.id %}">
+                                    <button>+</button>
+                                </a>
+                                <span>{{ product.amount }}</span>
+                                <a href="{% url 'main:decrement_amount' product.id %}">
+                                    <button>-</button>
+                                </a>
+                            </div>
+                        </td>
+                        <td>
+                            <a href="{% url 'main:delete_product' product.id %}">
+                                <button class="delete-button">Delete</button>
+                            </a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
         </table>
-
-        <h5>Sesi terakhir login: {{ last_login }}</h5>
         
+        <h1><h1>
         <a href="{% url 'main:create_product' %}">
-            <button>
+            <button class="add-button">
                 Add New Product
             </button>
         </a>
 
-        <a href="{% url 'main:logout' %}">
-            <button>
-                Logout
-            </button>
-        </a>
+        <h5>Sesi terakhir login: {{ last_login }}</h5>
     </div>
 </body>
 </html>

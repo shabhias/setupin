@@ -1,34 +1,80 @@
+
 {% extends 'base.html' %}
 
 {% block meta %}
+
     <title>Register</title>
+
+
 {% endblock meta %}
 
+
+
+
 {% block content %}  
-
-<div class = "login">
+<style>
+    /* Gaya CSS Anda dimulai di sini */
+    @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
+    *
+    {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
     
-    <h1>Register</h1>  
+    }
+    body
+    {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background: #BFFF55;
+    }
 
-        <form method="POST" >  
-            {% csrf_token %}  
-            <table>  
-                {{ form.as_table }}  
-                <tr>  
-                    <td></td>
-                    <td><input type="submit" name="submit" value="Daftar"/></td>  
-                </tr>  
-            </table>  
-        </form>
+    .box
+    {
+        position: relative;
+        width: 480px;
+        height: 500px;
+        background: #1c1c1c;
+        border-radius: 8px;
 
-    {% if messages %}  
-        <ul>   
-            {% for message in messages %}  
-                <li>{{ message }}</li>  
-                {% endfor %}  
-        </ul>   
-    {% endif %}
+    }
+    .box form
+    {
+        color: #fff;
+        font-weight: 500;
+        text-allign: center;
+        letter-spacing: 0.1em;
+    }
 
-</div>  
 
+
+</style>
+
+<body>
+    <div class = "box">
+        <form>
+            <h1>Register</h1>  
+                <form method="POST" >  
+                    {% csrf_token %}  
+                    <table>  
+                        {{ form.as_table }}  
+                        <tr>  
+                            <td></td>
+                            <td><input type="submit" name="submit" value="Daftar"/></td>  
+                        </tr>  
+                    </table>  
+                </form>
+            {% if messages %}  
+                <ul>   
+                    {% for message in messages %}  
+                        <li>{{ message }}</li>  
+                        {% endfor %}  
+                </ul>   
+            {% endif %}
+        <form>
+    </div>  
+<body>
 {% endblock content %}
