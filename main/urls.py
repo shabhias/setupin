@@ -4,10 +4,11 @@ from main.views import show_main, create_product, show_xml, show_json, show_xml_
 from main.views import register
 from main.views import login_user
 from main.views import logout_user, increment_amount, decrement_amount, delete_product
-
+from main.views import edit_product, get_product_json, add_product_ajax
 app_name = 'main'
 
 urlpatterns = [
+    
     path('', show_main, name='show_main'),
     path('create-product', create_product, name='create_product'),
     path('xml/', show_xml, name='show_xml'), 
@@ -20,4 +21,7 @@ urlpatterns = [
     path('increment-amount/<int:id>/', increment_amount, name='increment_amount'),
     path('decrement-amount/<int:id>/', decrement_amount, name='decrement_amount'),
     path('delete-product/<int:id>/', delete_product, name='delete_product'),
+    path('edit-product/<int:id>', edit_product, name='edit_product'),
+    path('get-product/', get_product_json, name='get_product_json'),
+    path('create-product-ajax/', add_product_ajax, name='add_product_ajax')
 ]

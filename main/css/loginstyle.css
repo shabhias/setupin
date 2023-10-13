@@ -16,7 +16,7 @@ body
     background: #23242a;
 
 }
-.login
+.box
 {
     position: relative;
     width: 320px;
@@ -94,6 +94,5 @@ body
     overflow: hidden;
     transition: 0.5s;
     pointer-events:  none;
-
 
 }
