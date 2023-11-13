@@ -9,8 +9,6 @@
 {% endblock meta %}
 
 
-
-
 {% block content %}  
 <style>
     /* Gaya CSS Anda dimulai di sini */
@@ -45,7 +43,7 @@
     {
         color: #fff;
         font-weight: 500;
-        text-allign: center;
+        text-align: center;
         letter-spacing: 0.1em;
     }
 
@@ -55,8 +53,11 @@
 
 <body>
     <div class = "box">
-        <form>
+        
+        <div class = "login">
+    
             <h1>Register</h1>  
+        
                 <form method="POST" >  
                     {% csrf_token %}  
                     <table>  
@@ -67,6 +68,7 @@
                         </tr>  
                     </table>  
                 </form>
+        
             {% if messages %}  
                 <ul>   
                     {% for message in messages %}  
@@ -74,7 +76,14 @@
                         {% endfor %}  
                 </ul>   
             {% endif %}
-        <form>
+        
+        </div>   
+        
     </div>  
 <body>
-{% endblock content %}
+{% endblock content %} 
+
+
+
+
+

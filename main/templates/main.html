@@ -198,7 +198,7 @@
 </body>
 
 
-<div class="modal" id="exampleModal">
+<div class="modal" id="exampleModal"  style="display: none;">
     <div class="modal-background" id="closeModal"></div>
     <div class="modal-card">
         <header class="modal-card-head">
@@ -209,25 +209,25 @@
             <form id="form">
                 {% csrf_token %}
                 <div class="field">
-                    <label for="name" class="label">Name:</label>
+                    <label for="name" class="label">name:</label>
                     <div class="control">
                         <input class="input" type="text" id="name" name="name">
                     </div>
                 </div>
                 <div class="field">
-                    <label for="description" class="label">Description:</label>
+                    <label for="description" class="label">description:</label>
                     <div class="control">
                         <textarea class="textarea" id="description" name="description"></textarea>
                     </div>
                 </div>
                 <div class="field">
-                    <label for="price" class="label">Price:</label>
+                    <label for="price" class="label">price:</label>
                     <div class="control">
                         <input class="input" type="number" id="price" name="price">
                     </div>
                 </div>
                 <div class="field">
-                    <label for="amount" class="label">Amount:</label>
+                    <label for="amount" class="label">amount:</label>
                     <div class="control">
                         <input class="input" type="number" id="amount" name="amount">
                     </div>
@@ -254,34 +254,39 @@
         products.forEach((product, index) => {
             totalTickets += product.amount;
             htmlString += `
-                <div class="column is-one-third ${index === products.length - 1 ? 'bg-blue-200' : ''}">
-                    <div class="card" style="background-color: #f1eacc; border: 1px solid #bd9189;">
-                        <div class="card-content">
-                            <p class="title has-text-black">${product.name}</p>
-                            <p class="subtitle has-text-black">${product.description}</p>
-                            <p class="has-text-weight-bold">Price: ${product.price}</p>
-                            
-                            <!--controls for this item-->
-                            
-                            <div class="price-amount-controls">
-
-                                <button onclick="decrementAmount(${product.pk})" class="button is-warning is-small">-</button>
-                                <span id="amount${product.pk}" class="text-lg font-semibold">${product.amount}</span>
-                                <button onclick="incrementAmount(${product.pk})" class="button is-warning is-small" id="button_add">+</button>
-                               
+            <div class="card-container" >
+                {% for product in products %}
+                    <div class="card">
+                        <div class="card-header">
+                            <h4>{{ product.name }}</h4>
+                        </div>
+                        <div class="card-body">
+                            <p>Rp. {{ product.price }}</p>
+                            <p>{{ product.description }}</p>
+                            <div class="amount">
+                                <a href="{% url 'main:increment_amount' product.id %}">
+                                    <button class="inc">+</button>
+                                </a>
+                                <span>{{ product.amount }}</span>
+                                <a href="{% url 'main:decrement_amount' product.id %}">
+                                    <button>-</button>
+                                </a>
                             </div>
                         </div>
-                        <footer class="card-footer is-centered" style="background-color: #caa99b;">
-                            <div class="card-footer-item">
-                                <a href="${product.edit_url}" class="button is-info">Edit</a>
-                            </div>
-                        
-                            <div class="card-footer-item">
-                                <button onclick="deleteItem(${product.pk})" class="button is-danger">Delete</button>
-                            </div>
-                        </footer>
+                        <div class="card-footer">
+                            <a href="{% url 'main:delete_product' product.id %}">
+                                <button class="delete-button">Delete</button>
+                            </a>
+                            <a href="{% url 'main:edit_product' product.pk %}">
+                                <button class="edit-button">Edit</button>
+                            </a>
+                        </div>
                     </div>
+                {% endfor %}
+                <th> </th>
                 </div>`;
+
+
         });
         document.getElementById("product-count").textContent = totalProduct;
         document.getElementById("product_table").innerHTML = htmlString;
@@ -328,6 +333,7 @@
             document.getElementById("exampleModal").classList.remove("is-active");
         };
 
+    
         // Perbarui item saat halaman dimuat.
         refreshProducts();
     </script>
