@@ -33,7 +33,7 @@ def login(request):
     else:
         return JsonResponse({
             "status": False,
-            "message": "Login gagal, periksa kembali email atau kata sandi."
+            "message": "Login gagal, periksa kembali kata sandi atau email anda."
         }, status=401)
         
         
